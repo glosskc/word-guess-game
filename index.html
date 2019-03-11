@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../word_guess/word-guess-game/assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+  <div class="container">
+
+
+    <div class="jumbotron">
+        <h1 id="banner" class="text-center">
+         <strong>Japanese food Word Guess Game</strong>
+        </h1>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div id="wordHint" class="col-lg-12">
+
+        </div>
+    </div>
+    
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div id="imageHint" class="card" style="height: 40rem">
+               <div class="card-header">
+                    <h4 class="text-center">Japanese Food</h4>
+               </div>
+               <div class="card-body">
+
+               </div>
+              
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div id="words" class="card" style="height: 40rem">
+                <div class="card-header">
+                     <h4 class="text-center">Guess the Word</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                     <button id="foodBtn" class="btn btn-dark btn-lg normal-button">
+                      <span class="fa fa-ok"></span> Food Catagory</button>
+                      <button id="citiesBtn" class="btn btn-primary btn-lg grow-button">
+                       <span class="fa fa-plus"></span> Cities Catagory</button>
+                    </div>
+                    <div class="text-center" id="guessArea">
+                         <p id="directions-text">Press any Key to start playing!</p>
+                         <p id="wordInput"></p>
+                         <p id="lettersGuessed"></p>
+                         <p id="chancesLeft"></p>
+                         <p id="wins"></p>
+                         <p id="losses"></p>
+                         
+
+                    </div>
+
+                </div>
+            </div>       
+
+        </div>
+    </div>
+
+
+
+
+  </div>
+  <!-- <script type="text/javascript">
+  //$(document).ready(function(){
+    //  document.onkeyup = function(event){
+    //      var userGuess = event.key;
+    var $foodBtn = document.getElementById("food-cat-button");
+    var $wordInput = document.getElementById("wordInput");
+    var $lettersGuessed = document.getElementById("lettersGuessed");
+    var $chancesLeft = document.getElementById("chancesLeft");
+    var $wins = document.getElementById("wins");
+
+
+
+      var foodWords = ["sushi", "ramen", "soba", "udon"];
+      var wins = 0;
+      var guesses = 7;
+      var gameStared = false;
+      var getWord = "";
+      var wordArray = [];
+      var guessedLetter = [];
+      var wrongLetter = [];
+
+      function gameLoop() {
+          gameStared = true;
+          guesses = 7;
+          guessedLetter = [];
+          wrongLetter = [];
+          wordArray = [];
+
+          getWord = foodWords[Math.floor(Math.random()* foodWords.length)];
+
+          for (var i = 0; i < getWord.length; i++) {
+              if (getWord[i] === " ") {
+                  wordArray.push(" ");
+              } else {
+                  wordArray.push("_");
+              }
+          }
+
+          $chancesLeft.textContent = chancesLeft;
+          $wordInput.textContent = wordArray.join("");
+          $lettersGuessed.textContent = wrongLetter;
+
+      }
+
+      function letterCheck(letter) {
+          console.log(letter);
+
+          if(gameStared === true && guessedLetter.indexOf(letter) === -1);
+
+          guessedLetter.push(letter);
+
+          for (var i = 0; i < getWord.length; i++)
+
+          if (getWord[i].toLowerCase() === letter.toLowerCase()){
+
+            wordArray[i] = getWord[i];
+          }
+      }
+
+          $wordInput.textContent = wordArray.join("");
+          {
+              if (gameStared) {
+                  alert
+              }
+          }
+
+          function checkLetter(letter){
+              if (
+                  wordArray.indexOf(letter.toLowerCase()) === -1
+                  &&
+                  wordArray.indexOf(letter.toUppercase()) === -1
+              ) {
+                  chancesLeft --;
+                  wrongLetter.push(letter);
+                  $lettersGuessed.textContent = wrongLetter.join(" ");
+                  $chancesLeft.textContent = chancesLeft;
+              }
+              checkLoss();
+          }
+
+          function checkLoss() {
+              if (chancesLeft === 0) {
+                  losses++;
+                  gameStared = false;
+                  $losses.textContent = losses;
+                  $wordInput.textContent = getWord;
+              }
+              checkWin();
+          }
+
+          function checkWin() {
+              if(getWord.toLowerCase() === wordArray.join("").toLowerCase());
+              {
+                  wins++;
+                  gameStared = false;
+                  $wins.textContent = wins;
+              }
+          }
+
+          $foodBtn.addEventListener("click", newGame);
+
+          document.onkeyup = function(event) {
+              if (event.keyCode >= 65 && event.keyCode <= 90) {
+                  checkLetter(event.key);
+              }
+          };
+
+
+      
+    //   var foodWord = foodWords[Math.floor(Math.random() * foodWords.length)];
+        
+    //     var answerArray = [];
+      
+    //       for(var i = 0; i < foodWord.length; i++) {
+    //          answerArray[i] = "_";
+    //         document.getElementById("#wordInput").innerHTML = foodWord.length;
+
+    //       } 
+    //       var remainingLetters = foodWord.length;
+
+    //       while (remainingLetters > 0) {
+        
+    //       document.getElementById("#guessed").innerHTML = guess
+
+    //       }
+
+          
+      
+          /*s = wordInput.join(" ");
+          document.getElementById("wordInput").innerHTML = foodWords;*/
+        
+        
+
+      /*var cities = ["tokyo", "kyoto", "sendai", "hiroshima",];
+      cities[Math.floor(Math.random() * cities.length)];
+      console.log(cities)*/
+
+      
+//      }
+    //});
+      
+          
+      
+//   }) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>   
+<script src="word-guess-game/assets/javascript/game.js"></script>
+    
+</body>
+</html>
